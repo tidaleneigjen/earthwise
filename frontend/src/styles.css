@@ -1,0 +1,131 @@
+/* src/styles.css */
+
+:root {
+    --blackberry-cream: #733758ff;
+    --sunlit-clay: #D3A063ff;
+    --dusty-olive: #677B46ff;
+    --camel: #CA9F7Cff;
+    --antique-white: #F8E6D1ff;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+header {
+    background-color: var(--antique-white); /* Background color from palette */
+    padding: 20px;
+    text-align: center; /* Center the header content */
+}
+
+/* Navigation */
+nav {
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the menu items within the nav */
+    background-color: var(--sunlit-clay); /* Background color from palette */
+}
+
+nav ul {
+    display: flex; /* Use flexbox for the list to arrange items horizontally */
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Reset default margin to ensure no extra space */
+}
+
+nav ul li {
+    margin: 0 15px; /* Adjust spacing between items */
+}
+
+/* Hamburger Menu for Mobile */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack items for mobile */
+        display: none; /* Initially hide */
+    }
+
+    nav.active {
+        display: flex; /* Show when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+        cursor: pointer;
+        color: var(--blackberry-cream); /* Color for hamburger icon */
+    }
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    text-align: center;
+    max-width: 800px; /* Limit the width of the main content area */
+    margin: 0 auto;  /* Center it horizontally */
+    background-color: var(--camel); /* Background color from palette */
+}
+
+/* Sticky Footer */
+footer {
+    background-color: var(--blackberry-cream); /* Background color from palette */
+    padding: 10px;
+    text-align: center;
+    color: var(--antique-white); /* Text color from palette */
+}
+
+/* Sticky footer on desktop */
+@media (min-width: 769px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Ensure it takes full height */
+    }
+
+    main {
+        flex: 1; /* Allow main to take remaining space */
+    }
+}
+
+/* App-specific Styles */
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear; /* Keep logo spin animation */
+    }
+}
+
+.App-header {
+    background-color: var(--blackberry-cream);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: var(--sunlit-clay);
+}
+
+.App-link {
+    color: var(--dusty-olive);
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
