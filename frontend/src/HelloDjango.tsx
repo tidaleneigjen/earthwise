@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+
 const HelloDjango: React.FC = () => {
   const [message, setMessage] = useState<string>("Loading...");
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/hello/")
+    fetch("`${API_URL}`/api/hello/")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
