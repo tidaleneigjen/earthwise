@@ -1,33 +1,20 @@
-// src/components/Menu.js
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Navbar, Nav } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Menu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div>
-      <div className='hamburger' onClick={toggleMenu}>
-        ☰
-      </div>
-      <nav className={isOpen ? "active" : ""}>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/blog'>Blog</Link>
-          </li>
-          <li>
-            <Link to='/spirituality'>Spirituality</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <Navbar bg='light' expand='lg'>
+      <Navbar.Brand href='#home'>Brand</Navbar.Brand>
+      <Navbar.Toggle aria-controls='basic-navbar-nav' />
+      <Navbar.Collapse id='basic-navbar-nav'>
+        <Nav className='ml-auto'>
+          <Nav.Link href='/'>Home</Nav.Link>
+          <Nav.Link href='/blog'>Blog</Nav.Link>
+          <Nav.Link href='/spirituality'>Spirituality</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
