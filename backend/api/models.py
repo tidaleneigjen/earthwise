@@ -13,6 +13,20 @@ class AuthorProfile(models.Model):
     def __str__(self):
         return f"{self.user.get_full_name() or self.user.username}'s Profile"
 
+
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    description = models.TextField(blank=True)
+    cover_image = models.ImageField(upload_to='book_covers/', blank=True, null=True)
+    purchase_url = models.URLField(blank=True)
+    is_featured = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)

@@ -1,21 +1,18 @@
 // src/components/Home.js
 import React from "react";
-import Header from "./Header";
-import Menu from "./Menu";
-import Footer from "./Footer";
 
 const Home = () => {
   return (
-    <div>
-      <Header />
-      <Menu />
-      <main>
+    <>
+      <section className='hero'>
         <h2>Home Page Content</h2>
         <p>This is where you can add content specific to your home page.</p>
+      </section>
 
+      <section className='card'>
         <div className='content-container'>
           <img
-            src={`${process.env.PUBLIC_URL}/the-goddesss-casts-the-runes.jpg`} // Ensure you provide the correct path to your image
+            src={`${process.env.PUBLIC_URL}/the-goddess-casts-the-runes.jpg`}
             alt='The Goddess Casts the Runes'
             className='main-image'
           />
@@ -23,9 +20,8 @@ const Home = () => {
             The Goddess Casts the Runes is available to purchase now!
           </p>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </section>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import AuthorProfile, Category, Content, Comment
+from .models import AuthorProfile, Book, Category, Content, Comment
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,6 +13,15 @@ class AuthorProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuthorProfile
         fields = ['id', 'user', 'bio', 'profile_picture', 'website']
+
+
+class BookSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Book
+        fields = [
+            'id', 'title', 'slug', 'description', 'cover_image',
+            'purchase_url', 'is_featured', 'created_at', 'updated_at'
+        ]
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

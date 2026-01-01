@@ -3,11 +3,13 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>
-      <p>
-        &copy; {new Date().getFullYear()} Your Company Name. All rights
-        reserved.
-      </p>
+    <footer className='site-footer'>
+      <div className='container'>
+        <p className='muted'>
+          &copy; {new Date().getFullYear()} Your Company Name. All rights
+          reserved.
+        </p>
+      </div>
     </footer>
   );
 };

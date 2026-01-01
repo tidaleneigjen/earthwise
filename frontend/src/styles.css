@@ -6,6 +6,16 @@
     --dusty-olive: #677B46ff;
     --camel: #CA9F7Cff;
     --antique-white: #F8E6D1ff;
+
+    --bg: #f6f7fb;
+    --surface: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --primary: var(--blackberry-cream);
+    --primary-contrast: #ffffff;
+    --radius: 12px;
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 body {
@@ -15,117 +25,224 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.site {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1040px;
+    padding: 0 16px;
+    margin: 0 auto;
 }
 
 /* Header */
-header {
-    background-color: var(--antique-white); /* Background color from palette */
-    padding: 20px;
-    text-align: center; /* Center the header content */
+.site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    padding: 24px 0;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.site-tagline {
+    margin: 8px 0 0;
+    color: var(--muted);
 }
 
 /* Navigation */
-nav {
-    display: flex; /* Use flexbox for horizontal layout */
-    justify-content: center; /* Center the menu items within the nav */
-    background-color: var(--sunlit-clay); /* Background color from palette */
+.nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 20;
 }
 
-nav ul {
-    display: flex; /* Use flexbox for the list to arrange items horizontally */
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    position: relative;
+}
+
+.nav-toggle {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-weight: 600;
+}
+
+.nav-links {
     list-style: none;
     padding: 0;
-    margin: 0; /* Reset default margin to ensure no extra space */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-nav ul li {
-    margin: 0 15px; /* Adjust spacing between items */
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    background: rgba(15, 23, 42, 0.05);
+    text-decoration: none;
+}
+
+.nav-links a.active {
+    background: rgba(115, 55, 88, 0.12);
+    color: var(--primary);
+}
+
+.nav-links li:last-child a {
+    border: 1px solid var(--border);
 }
 
 /* Hamburger Menu for Mobile */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column; /* Stack items for mobile */
-        display: none; /* Initially hide */
+    .nav-links {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 8px);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 8px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        z-index: 30;
     }
 
-    nav.active {
-        display: flex; /* Show when active */
+    .nav-links.open {
+        display: flex;
     }
+}
 
-    .hamburger {
-        display: flex; /* Show hamburger icon */
-        cursor: pointer;
-        color: var(--blackberry-cream); /* Color for hamburger icon */
+@media (min-width: 769px) {
+    .nav-toggle {
+        display: none;
     }
 }
 
 /* Main Content */
-main {
-    padding: 20px;
-    text-align: center;
-    max-width: 800px; /* Limit the width of the main content area */
-    margin: 0 auto;  /* Center it horizontally */
-    background-color: var(--camel); /* Background color from palette */
+.site-main {
+    flex: 1;
+    padding: 24px 0 48px;
+}
+
+h2 {
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+}
+
+.hero {
+    padding: 12px 0 20px;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.prose {
+    text-align: left;
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+.media {
+    margin: 16px 0;
+}
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: calc(var(--radius) - 4px);
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--primary);
+    color: var(--primary-contrast);
+    border: 1px solid rgba(0, 0, 0, 0);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.button:hover {
+    text-decoration: none;
+    filter: brightness(0.98);
+}
+
+.post-title,
+.book-title {
+    margin: 0 0 8px;
+}
+
+.post-excerpt {
+    margin: 0;
 }
 
 /* Sticky Footer */
-footer {
-    background-color: var(--blackberry-cream); /* Background color from palette */
-    padding: 10px;
-    text-align: center;
-    color: var(--antique-white); /* Text color from palette */
-}
-
-/* Sticky footer on desktop */
-@media (min-width: 769px) {
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; /* Ensure it takes full height */
-    }
-
-    main {
-        flex: 1; /* Allow main to take remaining space */
-    }
-}
-
-/* App-specific Styles */
-.App {
-    text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear; /* Keep logo spin animation */
-    }
-}
-
-.App-header {
-    background-color: var(--blackberry-cream);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: var(--sunlit-clay);
-}
-
-.App-link {
-    color: var(--dusty-olive);
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 18px 0;
 }
