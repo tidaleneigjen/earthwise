@@ -27,6 +27,22 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+
+class Link(models.Model):
+    title = models.CharField(max_length=200)
+    url = models.URLField()
+    summary = models.TextField(blank=True)
+    sort_order = models.IntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['sort_order', 'title']
+
+    def __str__(self):
+        return self.title
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)

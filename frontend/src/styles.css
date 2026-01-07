@@ -178,6 +178,38 @@ h2 {
     padding: 12px 0 20px;
 }
 
+.book-promo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.book-promo-copy {
+    text-align: left;
+}
+
+.book-promo-copy h3 {
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+}
+
+.book-cover {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+@media (min-width: 769px) {
+    .book-promo {
+        grid-template-columns: 260px 1fr;
+    }
+
+    .book-cover {
+        max-width: 260px;
+        margin: 0;
+    }
+}
+
 .stack {
     display: flex;
     flex-direction: column;
@@ -238,6 +270,50 @@ h2 {
 
 .post-excerpt {
     margin: 0;
+}
+
+.meta {
+    margin: 0 0 10px;
+}
+
+.list-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 14px;
+    align-items: start;
+}
+
+.list-item-media {
+    width: 96px;
+}
+
+.thumb {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: block;
+}
+
+.list-item-body {
+    min-width: 0;
+}
+
+@media (max-width: 480px) {
+    .list-item {
+        grid-template-columns: 1fr;
+    }
+
+    .list-item-media {
+        width: 100%;
+    }
+
+    .thumb {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
 }
 
 /* Sticky Footer */

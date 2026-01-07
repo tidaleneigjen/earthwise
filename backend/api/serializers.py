@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import AuthorProfile, Book, Category, Content, Comment
+from .models import AuthorProfile, Book, Category, Content, Comment, Link
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,6 +21,15 @@ class BookSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'slug', 'description', 'cover_image',
             'purchase_url', 'is_featured', 'created_at', 'updated_at'
+        ]
+
+
+class LinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Link
+        fields = [
+            'id', 'title', 'url', 'summary', 'sort_order', 'is_published',
+            'created_at', 'updated_at'
         ]
 
 class CategorySerializer(serializers.ModelSerializer):

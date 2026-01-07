@@ -32,7 +32,24 @@ export const getBlogPost = async (slug) => {
   return res.data;
 };
 
+export const listArticles = async () => {
+  const res = await axios.get(`${API_BASE_URL}/content/`, {
+    params: { type: "article", published: "true" },
+  });
+  return res.data;
+};
+
+export const getArticle = async (slug) => {
+  const res = await axios.get(`${API_BASE_URL}/content/${slug}/`);
+  return res.data;
+};
+
 export const listBooks = async () => {
   const res = await axios.get(`${API_BASE_URL}/books/`);
+  return res.data;
+};
+
+export const listLinks = async () => {
+  const res = await axios.get(`${API_BASE_URL}/links/`);
   return res.data;
 };

@@ -2,9 +2,9 @@ from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .models import AuthorProfile, Book, Category, Content, Comment
+from .models import AuthorProfile, Book, Category, Content, Comment, Link
 from .serializers import (
-    UserSerializer, AuthorProfileSerializer, BookSerializer, CategorySerializer,
+    UserSerializer, AuthorProfileSerializer, BookSerializer, LinkSerializer, CategorySerializer,
     ContentSerializer, CommentSerializer
 )
 
@@ -56,6 +56,18 @@ class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     lookup_field = 'slug'
     permission_classes = [IsAdminOrReadOnly]
+
+
+class LinkViewSet(viewsets.ModelViewSet):
+    queryset = Link.objects.all()
+    serializer_class = LinkSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+    def get_queryset(self):
+        queryset = Link.objects.all()
+        if not (self.request.user and self.request.user.is_authenticated):
+            queryset = queryset.filter(is_published=True)
+        return queryset
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """

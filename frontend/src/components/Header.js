@@ -6,8 +6,10 @@ const Header = () => {
     <header className='site-header'>
       <div className='container header-inner'>
         <div>
-          <h1 className='site-title'>Welcome to Our Site</h1>
-          <p className='site-tagline'>Your tagline or motto goes here.</p>
+          <h1 className='site-title'>Earthwise</h1>
+          <p className='site-tagline'>
+            Anu Dudley: Teacher / Historian / Author
+          </p>
         </div>
       </div>
     </header>

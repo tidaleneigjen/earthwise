@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className='site-footer'>
       <div className='container'>
         <p className='muted'>
-          &copy; {new Date().getFullYear()} Your Company Name. All rights
+          &copy; {new Date().getFullYear()} Anu Dudley. All rights
           reserved.
         </p>
       </div>

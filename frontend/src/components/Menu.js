@@ -43,6 +43,11 @@ const Menu = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to='/links' onClick={closeMenu}>
+              Links
+            </NavLink>
+          </li>
+          <li>
             <NavLink to='/spirituality' onClick={closeMenu}>
               Spirituality
             </NavLink>

@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import BlogList from "./components/BlogList";
 import BlogDetail from "./components/BlogDetail";
 import Books from "./components/Books";
+import Links from "./components/Links";
 
 const PageLayout = ({ children }) => {
   return (
@@ -64,6 +65,14 @@ const App = () => {
           element={
             <PageLayout>
               <Books />
+            </PageLayout>
+          }
+        />
+        <Route
+          path='/links'
+          element={
+            <PageLayout>
+              <Links />
             </PageLayout>
           }
         />

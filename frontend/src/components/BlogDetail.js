@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getBlogPost, toAbsoluteMediaUrl } from "../api";
+import { getArticle, toAbsoluteMediaUrl } from "../api";
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -11,7 +11,7 @@ const BlogDetail = () => {
 
     const run = async () => {
       try {
-        const data = await getBlogPost(slug);
+        const data = await getArticle(slug);
         if (!mounted) return;
         setState({ loading: false, error: "", data });
       } catch (e) {
@@ -35,7 +35,7 @@ const BlogDetail = () => {
     return (
       <>
         <p className='muted'>
-          <Link to='/blog'>Back to Blog</Link>
+          <Link to='/blog'>Back to Articles</Link>
         </p>
         <h2>Loading…</h2>
       </>
@@ -46,9 +46,9 @@ const BlogDetail = () => {
     return (
       <>
         <p className='muted'>
-          <Link to='/blog'>Back to Blog</Link>
+          <Link to='/blog'>Back to Articles</Link>
         </p>
-        <h2>Blog Post</h2>
+        <h2>Article</h2>
         <p>{state.error}</p>
       </>
     );
@@ -56,18 +56,28 @@ const BlogDetail = () => {
 
   const post = state.data;
   const imageUrl = toAbsoluteMediaUrl(post?.featured_image);
+  const authorName =
+    `${post?.author?.first_name || ""} ${
+      post?.author?.last_name || ""
+    }`.trim() ||
+    post?.author?.username ||
+    "";
 
   return (
     <>
       <p className='muted'>
-        <Link to='/blog'>Back to Blog</Link>
+        <Link to='/blog'>Back to Articles</Link>
       </p>
       <h2>{post.title}</h2>
-      {post.published_date ? (
-        <p className='muted'>
-          Published: {new Date(post.published_date).toLocaleDateString()}
-        </p>
-      ) : null}
+      <p className='muted meta'>
+        {authorName ? <span>By {authorName}</span> : null}
+        {post.published_date ? (
+          <span>
+            {authorName ? " · " : ""}
+            {new Date(post.published_date).toLocaleDateString()}
+          </span>
+        ) : null}
+      </p>
       {imageUrl ? (
         <div className='media'>
           <img className='responsive-image' src={imageUrl} alt={post.title} />

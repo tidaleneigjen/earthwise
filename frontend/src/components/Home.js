@@ -10,15 +10,20 @@ const Home = () => {
       </section>
 
       <section className='card'>
-        <div className='content-container'>
-          <img
-            src={`${process.env.PUBLIC_URL}/the-goddess-casts-the-runes.jpg`}
-            alt='The Goddess Casts the Runes'
-            className='main-image'
-          />
-          <p className='announcement'>
-            The Goddess Casts the Runes is available to purchase now!
-          </p>
+        <div className='book-promo'>
+          <div className='book-promo-media'>
+            <img
+              src={`${process.env.PUBLIC_URL}/the-goddess-casts-the-runes.jpg`}
+              alt='The Goddess Casts the Runes'
+              className='responsive-image book-cover'
+            />
+          </div>
+          <div className='book-promo-copy'>
+            <h3>The Goddess Casts the Runes</h3>
+            <p className='announcement'>
+              The Goddess Casts the Runes is available to purchase now!
+            </p>
+          </div>
         </div>
       </section>
     </>
