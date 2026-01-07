@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import BlogList from "./components/BlogList";
 import BlogDetail from "./components/BlogDetail";
 import Books from "./components/Books";
+import BookDetail from "./components/BookDetail";
 import Links from "./components/Links";
 
 const PageLayout = ({ children }) => {
@@ -65,6 +66,14 @@ const App = () => {
           element={
             <PageLayout>
               <Books />
+            </PageLayout>
+          }
+        />
+        <Route
+          path='/books/:slug'
+          element={
+            <PageLayout>
+              <BookDetail />
             </PageLayout>
           }
         />

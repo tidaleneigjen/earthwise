@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { listBooks, toAbsoluteMediaUrl } from "../api";
+import { Link } from "react-router-dom";
 
 const Books = () => {
   const [state, setState] = useState({ loading: true, error: "", data: null });
@@ -70,33 +71,25 @@ const Books = () => {
         {books.map((book) => {
           const coverUrl = toAbsoluteMediaUrl(book.cover_image);
           return (
-            <section key={book.id} className='card book-card'>
-              <h3 className='book-title'>{book.title}</h3>
-              {coverUrl ? (
-                <div className='media'>
+            <article key={book.id} className='card book-list-item'>
+              <div className='book-list-media'>
+                {coverUrl ? (
                   <img
-                    className='responsive-image'
+                    className='book-list-cover'
                     src={coverUrl}
                     alt={book.title}
                   />
-                </div>
-              ) : null}
-              {book.description ? (
-                <div className='prose'>{book.description}</div>
-              ) : null}
-              {book.purchase_url ? (
-                <p>
-                  <a
-                    className='button'
-                    href={book.purchase_url}
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    Purchase
-                  </a>
-                </p>
-              ) : null}
-            </section>
+                ) : null}
+              </div>
+              <div className='book-list-body'>
+                <h3 className='book-title'>
+                  <Link to={`/books/${book.slug}`}>{book.title}</Link>
+                </h3>
+                {book.description ? (
+                  <p className='muted book-summary'>{book.description}</p>
+                ) : null}
+              </div>
+            </article>
           );
         })}
       </div>

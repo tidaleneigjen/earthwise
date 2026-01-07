@@ -49,6 +49,11 @@ export const listBooks = async () => {
   return res.data;
 };
 
+export const getBook = async (slug) => {
+  const res = await axios.get(`${API_BASE_URL}/books/${slug}/`);
+  return res.data;
+};
+
 export const listLinks = async () => {
   const res = await axios.get(`${API_BASE_URL}/links/`);
   return res.data;

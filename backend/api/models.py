@@ -17,7 +17,10 @@ class AuthorProfile(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
+    author_first_name = models.CharField(max_length=150, blank=True)
+    author_last_name = models.CharField(max_length=150, blank=True)
     description = models.TextField(blank=True)
+    detail_content = models.TextField(blank=True)
     cover_image = models.ImageField(upload_to='book_covers/', blank=True, null=True)
     purchase_url = models.URLField(blank=True)
     is_featured = models.BooleanField(default=False)
